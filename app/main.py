@@ -1,18 +1,28 @@
+
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+
 from app.chat_engine import process_chat
 
 app = FastAPI()
 
+# Enable CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 # Message schema
 class Message(BaseModel):
-
     role: str
     content: str
 
 # Request schema
 class ChatRequest(BaseModel):
-
     messages: list[Message]
 
 # Health endpoint
