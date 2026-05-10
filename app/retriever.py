@@ -4,63 +4,94 @@ import numpy as np
 
 from sentence_transformers import SentenceTransformer
 
-model = None
-index = None
-catalog = []
+# Load embedding model
+model = SentenceTransformer(
+    "sentence-transformers/all-MiniLM-L6-v2"
+)
 
+# Load vector database
+index = faiss.read_index("data/shl.index")
 
-def load_resources():
+# Load catalog data
+with open("data/shl_catalog.json", "r") as f:
 
-    global model
-    global index
-    global catalog
-
-    if model is None:
-
-        print("Loading model...")
-
-        model = SentenceTransformer(
-            "sentence-transformers/all-MiniLM-L6-v2"
-        )
-
-    if index is None:
-
-        print("Loading FAISS index...")
-
-        index = faiss.read_index("data/shl.index")
-
-    if not catalog:
-
-        print("Loading catalog...")
-
-        with open("data/shl_catalog.json", "r") as f:
-
-            catalog.extend(json.load(f))
+    catalog = json.load(f)
 
 
 def retrieve_assessments(query, top_k=5):
 
-    load_resources()
-
+    # Convert query into embedding
     query_embedding = model.encode([query])
 
+    # Search similar vectors
     distances, indices = index.search(
         np.array(query_embedding),
-        top_k
+        top_k * 3
     )
 
-    results = []
+    query_lower = query.lower()
+
+    scored_results = []
 
     for idx in indices[0]:
 
-        results.append(catalog[idx])
+        item = catalog[idx]
 
-    return results
+        score = 0
+
+        text = (
+            item["name"] + " " +
+            item.get("description", "") + " " +
+            item.get("test_type", "")
+        ).lower()
+
+        # Keyword boosting
+        keywords = query_lower.split()
+
+        for word in keywords:
+
+            if word in text:
+                score += 2
+
+        # Skill boosting
+        important_words = [
+            "java",
+            "python",
+            "developer",
+            "software",
+            "coding",
+            "programming",
+            "communication",
+            "stakeholder",
+            "leadership",
+            "manager",
+            "analyst"
+        ]
+
+        for word in important_words:
+
+            if word in query_lower and word in text:
+                score += 5
+
+        scored_results.append(
+            (score, item)
+        )
+
+    # Sort by score
+    scored_results.sort(
+        key=lambda x: x[0],
+        reverse=True
+    )
+
+    final_results = [
+        item for score, item
+        in scored_results[:top_k]
+    ]
+
+    return final_results
 
 
 def find_assessment_by_name(name):
-
-    load_resources()
 
     name = name.lower()
 
@@ -71,3 +102,19 @@ def find_assessment_by_name(name):
             return item
 
     return None
+
+
+# Test search
+if __name__ == "__main__":
+
+    query = "Java developer assessment"
+
+    results = retrieve_assessments(query)
+
+    print("\nResults:\n")
+
+    for item in results:
+
+        print(item["name"])
+        print(item["url"])
+        print()
