@@ -7,5 +7,3 @@ numpy
 faiss-cpu
 sentence-transformers
 pydantic
-selenium
-webdriver-manager
