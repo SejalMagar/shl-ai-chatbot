@@ -4,25 +4,46 @@ import numpy as np
 
 from sentence_transformers import SentenceTransformer
 
-# Load embedding model
-model = SentenceTransformer(
-    "sentence-transformers/all-MiniLM-L6-v2"
-)
+model = None
+index = None
+catalog = []
 
-# Load vector database
-index = faiss.read_index("data/shl.index")
 
-# Load catalog data
-with open("data/shl_catalog.json", "r") as f:
+def load_resources():
 
-    catalog = json.load(f)
+    global model
+    global index
+    global catalog
+
+    if model is None:
+
+        print("Loading model...")
+
+        model = SentenceTransformer(
+            "sentence-transformers/all-MiniLM-L6-v2"
+        )
+
+    if index is None:
+
+        print("Loading FAISS index...")
+
+        index = faiss.read_index("data/shl.index")
+
+    if not catalog:
+
+        print("Loading catalog...")
+
+        with open("data/shl_catalog.json", "r") as f:
+
+            catalog.extend(json.load(f))
+
 
 def retrieve_assessments(query, top_k=5):
 
-    # Convert query into embedding
+    load_resources()
+
     query_embedding = model.encode([query])
 
-    # Search similar vectors
     distances, indices = index.search(
         np.array(query_embedding),
         top_k
@@ -36,22 +57,10 @@ def retrieve_assessments(query, top_k=5):
 
     return results
 
-# Test search
-if __name__ == "__main__":
-
-    query = "Java developer assessment"
-
-    results = retrieve_assessments(query)
-
-    print("\nResults:\n")
-
-    for item in results:
-
-        print(item["name"])
-        print(item["url"])
-        print()
 
 def find_assessment_by_name(name):
+
+    load_resources()
 
     name = name.lower()
 
