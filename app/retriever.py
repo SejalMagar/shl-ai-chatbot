@@ -18,20 +18,62 @@ with open("data/shl_catalog.json", "r") as f:
     catalog = json.load(f)
 
 
+# Skill keyword boosting
+skill_keywords = {
+    "java": ["java", "backend", "developer"],
+    "python": ["python", "developer"],
+    "communication": ["communication", "stakeholder"],
+    "leadership": ["leadership", "manager"],
+    "sales": ["sales", "account manager"],
+    "coding": ["coding", "developer", "technical"]
+}
+
+
+# Reranking function
+def rerank_results(query, results):
+
+    query_words = set(query.lower().split())
+
+    scored = []
+
+    for item in results:
+
+        text = (
+            item.get("name", "") + " " +
+            item.get("description", "") + " " +
+            item.get("skills", "")
+        ).lower()
+
+        overlap = len([
+            word for word in query_words
+            if word in text
+        ])
+
+        scored.append((overlap, item))
+
+    scored.sort(
+        key=lambda x: x[0],
+        reverse=True
+    )
+
+    return [x[1] for x in scored]
+
+
+# Main retrieval function
 def retrieve_assessments(query, top_k=5):
+
+    query_lower = query.lower()
 
     # Convert query into embedding
     query_embedding = model.encode([query])
 
-    # Search similar vectors
+    # Search vectors
     distances, indices = index.search(
-        np.array(query_embedding),
+        np.array(query_embedding).astype("float32"),
         top_k * 3
     )
 
-    query_lower = query.lower()
-
-    scored_results = []
+    boosted_results = []
 
     for idx in indices[0]:
 
@@ -39,58 +81,60 @@ def retrieve_assessments(query, top_k=5):
 
         score = 0
 
-        text = (
-            item["name"] + " " +
+        combined_text = (
+            item.get("name", "") + " " +
             item.get("description", "") + " " +
-            item.get("test_type", "")
+            item.get("skills", "") + " " +
+            item.get("category", "")
         ).lower()
 
         # Keyword boosting
-        keywords = query_lower.split()
+        for key, words in skill_keywords.items():
 
-        for word in keywords:
+            if key in query_lower:
 
-            if word in text:
-                score += 2
+                for word in words:
 
-        # Skill boosting
-        important_words = [
+                    if word in combined_text:
+                        score += 2
+
+        # Technical filtering boost
+        technical_keywords = [
             "java",
             "python",
             "developer",
-            "software",
             "coding",
-            "programming",
-            "communication",
-            "stakeholder",
-            "leadership",
-            "manager",
-            "analyst"
+            "software"
         ]
 
-        for word in important_words:
+        if any(
+            word in query_lower
+            for word in technical_keywords
+        ):
 
-            if word in query_lower and word in text:
+            if "technical" in combined_text:
                 score += 5
 
-        scored_results.append(
-            (score, item)
-        )
+        boosted_results.append((score, item))
 
-    # Sort by score
-    scored_results.sort(
+    # Sort by boosted score
+    boosted_results.sort(
         key=lambda x: x[0],
         reverse=True
     )
 
-    final_results = [
-        item for score, item
-        in scored_results[:top_k]
+    results = [
+        x[1]
+        for x in boosted_results[:top_k]
     ]
 
-    return final_results
+    # Final reranking
+    results = rerank_results(query, results)
+
+    return results
 
 
+# Find assessment by name
 def find_assessment_by_name(name):
 
     name = name.lower()
@@ -104,10 +148,10 @@ def find_assessment_by_name(name):
     return None
 
 
-# Test search
+# Local test
 if __name__ == "__main__":
 
-    query = "Java developer assessment"
+    query = "Java developer communication"
 
     results = retrieve_assessments(query)
 
