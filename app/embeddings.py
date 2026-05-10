@@ -19,8 +19,21 @@ documents = []
 for item in catalog:
 
     text = f"""
-    Assessment: {item['name']}
-    Type: {item['test_type']}
+    Assessment Name: {item.get('name', '')}
+
+    Description: {item.get('description', '')}
+
+    Test Type: {item.get('test_type', '')}
+
+    Category: {item.get('category', '')}
+
+    Skills: {item.get('skills', '')}
+
+    Job Level: {item.get('job_level', '')}
+
+    Remote Testing: {item.get('remote_testing', '')}
+
+    Adaptive Support: {item.get('adaptive_support', '')}
     """
 
     documents.append(text)
@@ -28,14 +41,17 @@ for item in catalog:
 # Create embeddings
 embeddings = model.encode(documents)
 
+# Convert to numpy array
+embeddings = np.array(embeddings).astype("float32")
+
 # Create FAISS index
 dimension = embeddings.shape[1]
 
 index = faiss.IndexFlatL2(dimension)
 
-index.add(np.array(embeddings))
+index.add(embeddings)
 
 # Save vector database
 faiss.write_index(index, "data/shl.index")
 
-print("Embeddings created successfully.")
+print("Improved embeddings created successfully.")
