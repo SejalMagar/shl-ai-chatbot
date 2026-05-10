@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SHL AI Chatbot</title>
+
+    <style>
+
+        body {
+            font-family: Arial;
+            padding: 40px;
+        }
+
+        #chat {
+            width: 500px;
+            margin: auto;
+        }
+
+        input {
+            width: 70%;
+            padding: 10px;
+        }
+
+        button {
+            padding: 10px;
+        }
+
+        .message {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div id="chat">
+
+        <h2>SHL AI Chatbot</h2>
+
+        <input
+            type="text"
+            id="userInput"
+            placeholder="Type your message"
+        >
+
+        <button onclick="sendMessage()">
+            Send
+        </button>
+
+        <div id="response"></div>
+
+    </div>
+
+   <script>
+
+async function sendMessage() {
+
+    try {
+
+        const input =
+            document.getElementById("userInput");
+
+        const message = input.value;
+
+        const response = await fetch(
+             "http://127.0.0.1:8000/chat",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    messages: [
+                        {
+                            role: "user",
+                            content: message
+                        }
+                    ]
+                })
+            }
+        );
+
+        const data = await response.json();
+
+        console.log(data);
+
+        let html = `
+            <div class="message">
+                <h3>${data.reply}</h3>
+        `;
+
+        if (data.recommendations) {
+
+            data.recommendations.forEach(item => {
+
+                html += `
+                    <p>
+                        <b>${item.name}</b><br>
+                        ${item.test_type}<br>
+
+                        <a href="${item.url}" target="_blank">
+                            Open Assessment
+                        </a>
+                    </p>
+                `;
+            });
+        }
+
+        html += `</div>`;
+
+        document.getElementById("response").innerHTML =
+            html;
+
+    } catch(error) {
+
+        console.log(error);
+
+        document.getElementById("response").innerHTML =
+            "<p>Error connecting to backend.</p>";
+    }
+}
+
+</script>
+</body>
+
+</html>

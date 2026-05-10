@@ -1,0 +1,281 @@
+[
+  {
+    "name": "Products",
+    "url": "https://www.shl.com/products/",
+    "description": "Products assessment for professional hiring evaluation",
+    "test_type": "Assessment",
+    "skills": [
+      "products"
+    ]
+  },
+  {
+    "name": "Account Manager Solution",
+    "url": "https://www.shl.com/products/product-catalog/view/account-manager-solution/",
+    "description": "Account Manager Solution assessment for professional hiring evaluation",
+    "test_type": "Assessment",
+    "skills": [
+      "account manager solution"
+    ]
+  },
+  {
+    "name": "Administrative Professional - Short Form",
+    "url": "https://www.shl.com/products/product-catalog/view/administrative-professional-short-form/",
+    "description": "Administrative Professional - Short Form assessment for professional hiring evaluation",
+    "test_type": "Assessment",
+    "skills": [
+      "administrative professional - short form"
+    ]
+  },
+  {
+    "name": "Agency Manager Solution",
+    "url": "https://www.shl.com/products/product-catalog/view/agency-manager-solution/",
+    "description": "Agency Manager Solution assessment for professional hiring evaluation",
+    "test_type": "Assessment",
+    "skills": [
+      "agency manager solution"
+    ]
+  },
+  {
+    "name": "Apprentice + 8.0 Job Focused Assessment",
+    "url": "https://www.shl.com/products/product-catalog/view/apprentice-8-0-job-focused-assessment-4261/",
+    "description": "Apprentice + 8.0 Job Focused Assessment assessment for professional hiring evaluation",
+    "test_type": "Assessment",
+    "skills": [
+      "apprentice + 8.0 job focused assessment"
+    ]
+  },
+  {
+    "name": "Apprentice 8.0 Job Focused Assessment",
+    "url": "https://www.shl.com/products/product-catalog/view/apprentice-8-0-job-focused-assessment/",
+    "description": "Apprentice 8.0 Job Focused Assessment assessment for professional hiring evaluation",
+    "test_type": "Assessment",
+    "skills": [
+      "apprentice 8.0 job focused assessment"
+    ]
+  },
+  {
+    "name": "Bank Administrative Assistant - Short Form",
+    "url": "https://www.shl.com/products/product-catalog/view/bank-administrative-assistant-short-form/",
+    "description": "Bank Administrative Assistant - Short Form assessment for professional hiring evaluation",
+    "test_type": "Assessment",
+    "skills": [
+      "bank administrative assistant - short form"
+    ]
+  },
+  {
+    "name": "Bank Collections Agent - Short Form",
+    "url": "https://www.shl.com/products/product-catalog/view/bank-collections-agent-short-form/",
+    "description": "Bank Collections Agent - Short Form assessment for professional hiring evaluation",
+    "test_type": "Assessment",
+    "skills": [
+      "bank collections agent - short form"
+    ]
+  },
+  {
+    "name": "Bank Operations Supervisor - Short Form",
+    "url": "https://www.shl.com/products/product-catalog/view/bank-operations-supervisor-short-form/",
+    "description": "Bank Operations Supervisor - Short Form assessment for professional hiring evaluation",
+    "test_type": "Assessment",
+    "skills": [
+      "bank operations supervisor - short form"
+    ]
+  },
+  {
+    "name": "Bilingual Spanish Reservation Agent Solution",
+    "url": "https://www.shl.com/products/product-catalog/view/bilingual-spanish-reservation-agent-solution/",
+    "description": "Bilingual Spanish Reservation Agent Solution assessment for professional hiring evaluation",
+    "test_type": "Assessment",
+    "skills": [
+      "bilingual spanish reservation agent solution"
+    ]
+  },
+  {
+    "name": "Bookkeeping, Accounting, Auditing Clerk Short Form",
+    "url": "https://www.shl.com/products/product-catalog/view/bookkeeping-accounting-auditing-clerk-short-form/",
+    "description": "Bookkeeping, Accounting, Auditing Clerk Short Form assessment for professional hiring evaluation",
+    "test_type": "Assessment",
+    "skills": [
+      "bookkeeping, accounting, auditing clerk short form"
+    ]
+  },
+  {
+    "name": "Branch Manager - Short Form",
+    "url": "https://www.shl.com/products/product-catalog/view/branch-manager-short-form/",
+    "description": "Branch Manager - Short Form assessment for professional hiring evaluation",
+    "test_type": "Assessment",
+    "skills": [
+      "branch manager - short form"
+    ]
+  },
+  {
+    "name": "Cashier Solution",
+    "url": "https://www.shl.com/products/product-catalog/view/cashier-solution/",
+    "description": "Cashier Solution assessment for professional hiring evaluation",
+    "test_type": "Assessment",
+    "skills": [
+      "cashier solution"
+    ]
+  },
+  {
+    "name": "2",
+    "url": "https://www.shl.com/products/product-catalog/?start=12&type=2",
+    "description": "2 assessment for professional hiring evaluation",
+    "test_type": "Assessment",
+    "skills": [
+      "2"
+    ]
+  },
+  {
+    "name": "3",
+    "url": "https://www.shl.com/products/product-catalog/?start=24&type=2",
+    "description": "3 assessment for professional hiring evaluation",
+    "test_type": "Assessment",
+    "skills": [
+      "3"
+    ]
+  },
+  {
+    "name": "12",
+    "url": "https://www.shl.com/products/product-catalog/?start=132&type=2",
+    "description": "12 assessment for professional hiring evaluation",
+    "test_type": "Assessment",
+    "skills": [
+      "12"
+    ]
+  },
+  {
+    "name": "Global Skills Development Report",
+    "url": "https://www.shl.com/products/product-catalog/view/global-skills-development-report/",
+    "description": "Global Skills Development Report assessment for professional hiring evaluation",
+    "test_type": "Assessment",
+    "skills": [
+      "global skills development report"
+    ]
+  },
+  {
+    "name": ".NET Framework 4.5",
+    "url": "https://www.shl.com/products/product-catalog/view/net-framework-4-5/",
+    "description": ".NET Framework 4.5 assessment for professional hiring evaluation",
+    "test_type": "Assessment",
+    "skills": [
+      ".net framework 4.5"
+    ]
+  },
+  {
+    "name": ".NET MVC (New)",
+    "url": "https://www.shl.com/products/product-catalog/view/net-mvc-new/",
+    "description": ".NET MVC (New) assessment for professional hiring evaluation",
+    "test_type": "Assessment",
+    "skills": [
+      ".net mvc (new)"
+    ]
+  },
+  {
+    "name": ".NET MVVM (New)",
+    "url": "https://www.shl.com/products/product-catalog/view/net-mvvm-new/",
+    "description": ".NET MVVM (New) assessment for professional hiring evaluation",
+    "test_type": "Assessment",
+    "skills": [
+      ".net mvvm (new)"
+    ]
+  },
+  {
+    "name": ".NET WCF (New)",
+    "url": "https://www.shl.com/products/product-catalog/view/net-wcf-new/",
+    "description": ".NET WCF (New) assessment for professional hiring evaluation",
+    "test_type": "Assessment",
+    "skills": [
+      ".net wcf (new)"
+    ]
+  },
+  {
+    "name": ".NET WPF (New)",
+    "url": "https://www.shl.com/products/product-catalog/view/net-wpf-new/",
+    "description": ".NET WPF (New) assessment for professional hiring evaluation",
+    "test_type": "Assessment",
+    "skills": [
+      ".net wpf (new)"
+    ]
+  },
+  {
+    "name": ".NET XAML (New)",
+    "url": "https://www.shl.com/products/product-catalog/view/net-xaml-new/",
+    "description": ".NET XAML (New) assessment for professional hiring evaluation",
+    "test_type": "Assessment",
+    "skills": [
+      ".net xaml (new)"
+    ]
+  },
+  {
+    "name": "Accounts Payable (New)",
+    "url": "https://www.shl.com/products/product-catalog/view/accounts-payable-new/",
+    "description": "Accounts Payable (New) assessment for professional hiring evaluation",
+    "test_type": "Assessment",
+    "skills": [
+      "accounts payable (new)"
+    ]
+  },
+  {
+    "name": "Accounts Payable Simulation (New)",
+    "url": "https://www.shl.com/products/product-catalog/view/accounts-payable-simulation-new/",
+    "description": "Accounts Payable Simulation (New) assessment for professional hiring evaluation",
+    "test_type": "Assessment",
+    "skills": [
+      "accounts payable simulation (new)"
+    ]
+  },
+  {
+    "name": "Accounts Receivable (New)",
+    "url": "https://www.shl.com/products/product-catalog/view/accounts-receivable-new/",
+    "description": "Accounts Receivable (New) assessment for professional hiring evaluation",
+    "test_type": "Assessment",
+    "skills": [
+      "accounts receivable (new)"
+    ]
+  },
+  {
+    "name": "Accounts Receivable Simulation (New)",
+    "url": "https://www.shl.com/products/product-catalog/view/accounts-receivable-simulation-new/",
+    "description": "Accounts Receivable Simulation (New) assessment for professional hiring evaluation",
+    "test_type": "Assessment",
+    "skills": [
+      "accounts receivable simulation (new)"
+    ]
+  },
+  {
+    "name": "ADO.NET (New)",
+    "url": "https://www.shl.com/products/product-catalog/view/ado-net-new/",
+    "description": "ADO.NET (New) assessment for professional hiring evaluation",
+    "test_type": "Assessment",
+    "skills": [
+      "ado.net (new)"
+    ]
+  },
+  {
+    "name": "2",
+    "url": "https://www.shl.com/products/product-catalog/?start=12&type=1",
+    "description": "2 assessment for professional hiring evaluation",
+    "test_type": "Assessment",
+    "skills": [
+      "2"
+    ]
+  },
+  {
+    "name": "3",
+    "url": "https://www.shl.com/products/product-catalog/?start=24&type=1",
+    "description": "3 assessment for professional hiring evaluation",
+    "test_type": "Assessment",
+    "skills": [
+      "3"
+    ]
+  },
+  {
+    "name": "32",
+    "url": "https://www.shl.com/products/product-catalog/?start=372&type=1",
+    "description": "32 assessment for professional hiring evaluation",
+    "test_type": "Assessment",
+    "skills": [
+      "32"
+    ]
+  }
+]
